@@ -18,12 +18,13 @@
     <PackageReference Include="CloudinaryDotNet" Version="1.27.9" />
     <PackageReference Include="itext7" Version="9.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="9.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.2" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
     <PackageReference Include="PDFsharp" Version="6.1.1" />
     <PackageReference Include="PeachPDF.PdfSharpCore" Version="0.7.15" />
     <PackageReference Include="QuestPDF" Version="2025.4.0" />

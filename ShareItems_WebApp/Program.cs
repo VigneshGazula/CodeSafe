@@ -10,7 +10,7 @@ using SixLabors.ImageSharp;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION")
                        ?? builder.Configuration.GetConnectionString("DefaultConnectionString");
-builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<UserContext>(options => options.UseNpgsql(connectionString));
 
 // Configure Cloudinary settings
 builder.Services.Configure<CloudinarySettings>(
