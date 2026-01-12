@@ -11,13 +11,13 @@
                         @{
                             var icon = file.FileType switch
                             {
-                                "image" => "???",
-                                "video" => "??",
-                                "document" => "??",
-                                _ => "??"
+                                "image" => "&#x1F5BC;&#xFE0F;",
+                                "video" => "&#x1F3AC;",
+                                "document" => "&#x1F4C4;",
+                                _ => "&#x1F4E6;"
                             };
                         }
-                        <span class="file-type-icon">@icon</span>
+                        <span class="file-type-icon">@Html.Raw(icon)</span>
                     </div>
                     <div class="file-details">
                         <h4 class="file-name">@file.FileName</h4>
@@ -34,13 +34,13 @@
                        class="file-action-btn download-btn"
                        title="Download"
                        download>
-                        <span>??</span>
+                        <span>&#x2B07;&#xFE0F;</span>
                     </a>
                     <button type="button" 
                             onclick="deleteFile(@file.Id, '@file.FileName')" 
                             class="file-action-btn delete-btn"
                             title="Delete">
-                        <span>???</span>
+                        <span>&#x1F5D1;&#xFE0F;</span>
                     </button>
                 </div>
             </div>
@@ -50,7 +50,7 @@
 else
 {
     <div class="no-files">
-        <span class="no-files-icon">??</span>
+        <span class="no-files-icon">&#x1F4ED;</span>
         <p class="no-files-text">No files uploaded yet</p>
     </div>
 }
