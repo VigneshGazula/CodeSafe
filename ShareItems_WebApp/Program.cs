@@ -7,16 +7,16 @@ using ShareItems_WebApp.Settings;
 using ShareItems_WebApp.Helpers;
 using SixLabors.ImageSharp;
 
+// Db Settigs
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION")
                        ?? builder.Configuration.GetConnectionString("DefaultConnectionString");
 builder.Services.AddDbContext<UserContext>(options => options.UseNpgsql(connectionString));
 
-// Configure Cloudinary settings
+// Cloudinary settings
 builder.Services.Configure<CloudinarySettings>(
     builder.Configuration.GetSection("CloudinarySettings"));
 
-// Add session support for PIN verification
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -41,11 +41,9 @@ builder.Services.AddRazorPages();
 var app = builder.Build();
 var env = app.Services.GetRequiredService<IWebHostEnvironment>();
 
-// Note: No longer need to create uploads directory since we're using Cloudinary
-
 app.UseRouting();
 app.UseStaticFiles();
-app.UseSession(); // Enable session middleware for PIN verification
+app.UseSession(); // Enable session PIN verification
 app.MapRazorPages();
 app.MapControllers();
 app.UseAuthorization();

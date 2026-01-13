@@ -83,5 +83,28 @@ BEGIN
     VALUES ('20260111150207_InitialCreate', '9.0.2');
     END IF;
 END $EF$;
+
+DO $EF$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20260112101926_MakeFilePathNullable') THEN
+    INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+    VALUES ('20260112101926_MakeFilePathNullable', '9.0.2');
+    END IF;
+END $EF$;
+
+DO $EF$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20260112102138_AlterFilePathColumnNullable') THEN
+    ALTER TABLE "NoteFiles" ALTER COLUMN "FilePath" DROP NOT NULL;
+    END IF;
+END $EF$;
+
+DO $EF$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20260112102138_AlterFilePathColumnNullable') THEN
+    INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+    VALUES ('20260112102138_AlterFilePathColumnNullable', '9.0.2');
+    END IF;
+END $EF$;
 COMMIT;
 

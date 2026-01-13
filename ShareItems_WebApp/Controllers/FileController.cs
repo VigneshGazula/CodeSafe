@@ -19,9 +19,6 @@ namespace ShareItems_WebApp.Controllers
             _logger = logger;
         }
 
-        /// <summary>
-        /// Upload a file to a note
-        /// </summary>
         [HttpPost]
         public async Task<IActionResult> Upload(string code, IFormFile file, string fileType, string? pin = null)
         {
@@ -74,10 +71,6 @@ namespace ShareItems_WebApp.Controllers
                 return StatusCode(500, "An error occurred while uploading the file");
             }
         }
-
-        /// <summary>
-        /// Download a file by ID
-        /// </summary>
         [HttpGet]
         public async Task<IActionResult> Download(int fileId, string? pin = null)
         {
@@ -109,9 +102,7 @@ namespace ShareItems_WebApp.Controllers
             }
         }
 
-        /// <summary>
-        /// Get all files for a note by code
-        /// </summary>
+        // Get all files for a note by code
         [HttpGet]
         public async Task<IActionResult> GetFiles(string code, string? fileType = null, string? pin = null)
         {
@@ -160,9 +151,7 @@ namespace ShareItems_WebApp.Controllers
             }
         }
 
-        /// <summary>
-        /// Delete a file by ID
-        /// </summary>
+        // Delete a file by ID
         [HttpPost]
         public async Task<IActionResult> Delete(int fileId, string? pin = null)
         {

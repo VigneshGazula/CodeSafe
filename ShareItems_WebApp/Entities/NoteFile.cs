@@ -29,23 +29,17 @@ namespace ShareItems_WebApp.Entities
 
         public long FileSize { get; set; }
 
-        /// <summary>
-        /// Cloudinary secure URL for accessing the file
-        /// </summary>
+        // Cloudinary secure URL for accessing the file
         [Required]
         [MaxLength(1000)]
         public string FileUrl { get; set; } = string.Empty;
 
-        /// <summary>
-        /// Cloudinary public ID for managing the file (delete, transform, etc.)
-        /// </summary>
+        // Cloudinary public ID for managing the file (delete, transform, etc.)
         [Required]
         [MaxLength(500)]
         public string PublicId { get; set; } = string.Empty;
 
-        /// <summary>
-        /// Legacy field - kept for backward compatibility (can be removed in future migration)
-        /// </summary>
+        // Legacy field - kept for backward compatibility (can be removed in future migration)
         [MaxLength(500)]
         public string? FilePath { get; set; }
 
