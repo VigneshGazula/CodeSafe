@@ -41,6 +41,12 @@ builder.Services.AddRazorPages();
 var app = builder.Build();
 var env = app.Services.GetRequiredService<IWebHostEnvironment>();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<UserContext>();
+    db.Database.Migrate();
+}
+
 app.UseRouting();
 app.UseStaticFiles();
 app.UseSession(); // Enable session PIN verification
