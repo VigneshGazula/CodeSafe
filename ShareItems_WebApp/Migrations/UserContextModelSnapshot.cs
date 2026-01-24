@@ -77,7 +77,6 @@ namespace ShareItems_WebApp.Migrations
                         .HasColumnType("character varying(255)");
 
                     b.Property<string>("FilePath")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
 

@@ -37,7 +37,7 @@ namespace ShareItems_WebApp.Entities
                 entity.Property(nf => nf.StoredFileName).IsRequired().HasMaxLength(255);
                 entity.Property(nf => nf.FileType).IsRequired().HasMaxLength(50);
                 entity.Property(nf => nf.ContentType).IsRequired().HasMaxLength(100);
-                entity.Property(nf => nf.FilePath).IsRequired().HasMaxLength(500);
+                entity.Property(nf => nf.FilePath).IsRequired(false).HasMaxLength(500);
 
                 // Configure one-to-many relationship
                 entity.HasOne(nf => nf.Note)
