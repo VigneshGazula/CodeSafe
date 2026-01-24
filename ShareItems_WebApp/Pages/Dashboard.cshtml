@@ -1296,12 +1296,18 @@ function showTab(tabName) {
             form.method = 'POST';
             form.action = '/Dashboard/@Model.Code?handler=DeleteFile';
 
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'fileId';
-            input.value = fileId;
+            const fileIdInput = document.createElement('input');
+            fileIdInput.type = 'hidden';
+            fileIdInput.name = 'fileId';
+            fileIdInput.value = fileId;
 
-            form.appendChild(input);
+            const tokenInput = document.createElement('input');
+            tokenInput.type = 'hidden';
+            tokenInput.name = '__RequestVerificationToken';
+            tokenInput.value = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            form.appendChild(fileIdInput);
+            form.appendChild(tokenInput);
             document.body.appendChild(form);
             form.submit();
         }

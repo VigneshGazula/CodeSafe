@@ -91,9 +91,11 @@ namespace ShareItems_WebApp.Controllers
                     }
                 }
 
-                // Redirect to Cloudinary URL for file download
-                // Files are served directly from Cloudinary
-                return Redirect(noteFile.FileUrl);
+                // Download file from Cloudinary and return with proper filename
+                using var httpClient = new HttpClient();
+                var fileBytes = await httpClient.GetByteArrayAsync(noteFile.FileUrl);
+                
+                return File(fileBytes, noteFile.ContentType, noteFile.FileName);
             }
             catch (Exception ex)
             {

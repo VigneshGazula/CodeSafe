@@ -254,8 +254,19 @@ namespace ShareItems_WebApp.Pages
                 return RedirectToPage("/Index");
             }
 
-            // Redirect to Cloudinary secure URL for download
-            return Redirect(file.FileUrl);
+            // Download file from Cloudinary and return with proper filename
+            try
+            {
+                using var httpClient = new HttpClient();
+                var fileBytes = await httpClient.GetByteArrayAsync(file.FileUrl);
+                
+                return File(fileBytes, file.ContentType, file.FileName);
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = $"Failed to download file: {ex.Message}";
+                return RedirectToPage(new { code = Code });
+            }
         }
 
         public async Task<IActionResult> OnPostSetPinAsync(string pin, string confirmPin)
