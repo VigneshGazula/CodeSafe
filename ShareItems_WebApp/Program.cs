@@ -9,6 +9,11 @@ using SixLabors.ImageSharp;
 
 // Db Settigs
 var builder = WebApplication.CreateBuilder(args);
+var cs = builder.Configuration.GetConnectionString("DefaultConnectionString");
+Console.WriteLine("==== CONNECTION STRING START ====");
+Console.WriteLine(cs ?? "NULL");
+Console.WriteLine("==== CONNECTION STRING END ====");
+
 var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION")
                        ?? builder.Configuration.GetConnectionString("DefaultConnectionString");
 builder.Services.AddDbContext<UserContext>(options => options.UseNpgsql(connectionString));
