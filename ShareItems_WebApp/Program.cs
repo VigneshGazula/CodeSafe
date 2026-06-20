@@ -18,9 +18,8 @@ var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION")
                        ?? builder.Configuration.GetConnectionString("DefaultConnectionString");
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseNpgsql(
-        connectionString,
-        o => o.EnableRetryOnFailure()
-    ));
+        builder.Configuration.GetConnectionString("DefaultConnectionString"),
+        o => o.EnableRetryOnFailure()));
 
 
 // Cloudinary settings
