@@ -18,7 +18,7 @@ var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION")
                        ?? builder.Configuration.GetConnectionString("DefaultConnectionString");
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseNpgsql(
-        builder.Configuration.GetConnectionString("DefaultConnectionString"),
+        connectionString,
         o => o.EnableRetryOnFailure()
     ));
 
